@@ -1,0 +1,123 @@
+<html>
+
+	<head>
+	
+		<link rel="stylesheet" href="custom.css">
+		<style>
+			div{
+			
+				border: 2;
+				color: #ffffff;
+				background: #000066;
+				font-size: 100%;
+				font-weight: bold;
+				padding: 2px 10px;
+				width: 100%;
+				*width: 100%;
+				*background: #58B14C;
+				-webkit-appearance: none;
+				cursor:pointer;
+				
+			
+			}
+		
+		
+		</style>
+	</head>
+	<body>
+		<h1><center>ABOUT THE APP</center></h1><br>
+	
+		<h2><div  onclick='organ()'><div id="orgsymbol">v &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp ABOUT 79%</div>
+		
+		
+		</div></h2>
+		<span id="org"> </span>
+
+		<h2><div  onclick='game()'><div id="gamesymbol">v  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp fORTUNA CRICKET</div>
+
+		
+		</div></h2>
+		<span id="fortuna"> </span>
+
+		<h2><div  onclick='team()'><div id="teamsymbol">v  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp 79% TEAM</div>
+
+		
+		</div></h2>
+		<span id="teams"> </span>
+
+		
+		<div><h1 style="text-align:right"><a href="menu.html">MENU</a></h1></div>
+
+	</body>
+	
+	<script>
+	var i=0;
+	var g=0;
+	var t=0;
+		function organ()
+		{
+		
+			if(i==0)
+			{
+					
+					document.getElementById("org").innerHTML="<h3><p>Different theories are involved in developing this brand name. Everything is Unique and Unimaginable, so its been maintain secretly until it Reavealed.</p></h3>";
+					document.getElementById("orgsymbol").innerHTML="^ &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp ABOUT 79%";
+					i=1;
+			}
+			else
+			{
+			
+				document.getElementById("org").innerHTML=" ";
+				document.getElementById("orgsymbol").innerHTML="v &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp ABOUT 79%";
+				i=0;
+			
+			}
+		
+		}
+		
+
+		function game()
+		{
+		
+			if(g==0)
+			{
+					
+					document.getElementById("fortuna").innerHTML="<h3><p>The word fortuna comes from brazil dictionary. fortuna means for luck. This game is fully luck oriented. This game shown your luck in result</p></h3>";
+					document.getElementById("gamesymbol").innerHTML=" ^  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp fORTUNA CRICKET";
+					g=1;
+			}
+			else
+			{
+			
+				document.getElementById("fortuna").innerHTML=" ";
+				document.getElementById("gamesymbol").innerHTML=" v  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp fORTUNA CRICKET";
+				g=0;
+			
+			}
+		
+		}
+	
+		function team()
+		{
+		
+			if(t==0)
+			{
+					
+					document.getElementById("teams").innerHTML="<h3><p>PrakashRaj P<br>Rohith Kumar M<br>SomaSekaran D<br>Vijay P<br></p></h3>";
+					document.getElementById("teamsymbol").innerHTML="^  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp 79% TEAM";
+					t=1;
+			}
+			else
+			{
+			
+				document.getElementById("teams").innerHTML=" ";
+				document.getElementById("teamsymbol").innerHTML="v  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp 79% TEAM";
+				t=0;
+			
+			}
+		
+		}
+	
+	</script>
+	
+</html>

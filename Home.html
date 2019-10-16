@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+  padding-top: 30%;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  border-radius:20px;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #000066;
+  border-radius:20px;
+}
+.responsive{
+	width:100%;
+	height:100%;
+
+}
+</style>
+<meta name="viewport" content="width= device-width , initial-scale=1.0">
+<meta http-equiv="refresh" content=" 8; url=menu.html " />
+		
+</head>
+<body style="padding-left:40px; padding-right:40px;background-size:1000px 500px;">
+	
+	<center><div><img src="fcg.jpg" class="responsive" width="600" height="400"></div></center>
+
+
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+<br>
+ 
+
+<script>
+
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 80);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+
+<html>
+	<head><meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="custom.css">
+	<embed src="Gameplay.mp3" autostart="true" hidden="true"> </embed>
+	</head>
+	<body>
+	
+	<center>
+		<table border=0 cellspacing="10" style=" padding:10px; text-align:center; border-spacing:10px;width:100%; height: 70%;">
+			
+			<tr>
+				<td colspan=2><h1><div id="innings"></p></h1></td>
+
+			</tr>
+
+			<tr>
+				<td><h1><p>RUN</p></h1></td>
+				<td><h1><p id="score">0</p></td>
+			
+			</tr>
+			<tr>
+				<td><h1><p>TOTAL</p></h1></td>
+				<td><h1><p id="total">0</p></td>
+
+			</tr>
+			<tr>
+				<td><h1><p>OVER</p></h1></td>
+				<td><h1><p id="over">0</p></td>
+			</tr>
+
+			<tr>
+				<td><h1><p>WICKET</p></h1></td>
+				<td><h1><p id="wicket">0</p></td>
+			</tr>
+			<tr>
+
+				<td><h1><p>TARGET</p></h1></td>
+				<td><h1><p id="target"></p></h1></td>
+
+			</tr>
+			<tr>
+
+				<td colspan=2><input type="text" dir="rtl"  size=20 id="overboard" class="runcard" style="width:90%;" readonly=true></td>				
+
+			</tr>
+			<tr>
+				<td colspan=2><textarea id="commentry" style="width:90%;height:100px;" class="commentary" readonly=true></textarea></td>
+
+			</tr>
+
+			<tr>
+				<td colspan=2><button onclick=produce() id="next">NEXT BALL</button>
+				<form method="get" name="resultform" action="result.html" ><input type="hidden" name="vals" id="container" ><button type="submit" id="resubmit" value="RESULT" hidden>RESULT</button></form></td>
+
+			</tr>
+
+		</table>
+		
+	</body>
+	<script>
+	
+	
+		targetscore=0;
+		constover=0;
+		commentryflag=0;
+		flag=0;
+		total=0;
+		balls=0.0;
+		over=0;
+		totalover=0.0;
+		wicket=0;
+		overstack="";
+		commentrystack="";	
+		inningsflag=0;
+		inningsnum="";
+		winningflag=0;
+
+		var querystring=decodeURIComponent(window.location.search);
+		querystring=querystring.substring(1);
+		var queries=querystring.split("&");
+		var maincontainer;
+	
+
+		var querystring=decodeURIComponent(window.location.search);
+		querystring=querystring.substring(1);
+		var queries=querystring.split("&");
+		player1=queries[0];
+		player2=queries[1];
+		reqover=queries[2];
+		
+		
+		player1=player1.substring(5);
+		player2=player2.substring(5);
+		reqover=reqover.substring(5);
+		
+		reqover=parseInt(reqover);
+		
+		var p1score,p2score;
+		
+		function produce()
+		{
+			
+			
+			value=Math.floor(Math.random()*10);
+
+			if(value==5||value==7)
+			{value=1;}
+
+			else if(value==9)
+			{value=2;}
+
+			else if(value==8)
+			{
+				value=0;
+				commentryflag=1;
+				wicket=wicket+1;
+				if(wicket==11)
+				{
+					wicket=0;
+					targetscore=score;
+					score=0;
+					total=0;
+					
+					over=0;
+					balls=0.0-0.1;
+					
+
+				}
+			}
+
+			else { }			
+			document.getElementById("score").innerHTML=value;
+			total=total+value;
+			
+			balls=balls+0.1;
+			if(balls==0.6)
+			{
+				over=over+1;
+				balls=0.0;
+				flag=1;
+			}
+			runstack=value;
+			totalover=over+balls;
+						if(totalover==reqover)
+			{ 
+
+					wicket=0;
+					
+					score=0;
+					
+					if(inningsflag==1)
+					{
+						
+						if(targetscore<=total)
+						{
+							
+							inningsflag=0;
+							var btn=document.getElementById("next");
+							btn.hidden=true;	
+							
+							
+							var resubmitbtn=document.getElementById("resubmit");
+							resubmitbtn.hidden=false;
+							
+							
+							document.getElementById("container").value=player2;
+							winningflag=1;
+							
+						}
+						else{
+						
+							
+							var btn=document.getElementById("next");
+							btn.hidden=true;
+							var resubmitbtn=document.getElementById("resubmit");
+							resubmitbtn.hidden=false;
+
+							
+							document.getElementById("container").value=player1;
+							winningflag=1;
+
+							}
+
+					}
+					
+					if(winningflag==0)
+					{
+					
+					
+
+					targetscore=total+1;					total=0;
+					value=0;
+					over=0;
+					balls=0.0-0.1;
+					totalover=0;
+
+
+					inningsflag=1;
+					}
+			}
+						
+
+			overstack=runstack+"   "+overstack;
+
+			if (value==0)
+			{ ballpercommentry="it is a dot ball \n";
+				if(commentryflag==1)
+				{
+
+					commentryflag=0;
+					ballpercommentry="ohh noo batsman lost his wicket \n";
+
+				}			
+
+			}
+			else if(value==1)
+			{ballpercommentry="it is a single \n";}
+			else if(value==2)
+			{ballpercommentry="nice running its two for batsman \n";}
+			else if(value==3)
+			{ballpercommentry="superb running three runs on board\n";}
+			else if(value==4)
+			{ballpercommentry="nice shot four for batsmen \n";}
+			else if(value==6)
+			{ballpercommentry="OMG it six he hit it hard \n";}
+			else if(value==8)
+			{ballpercommentry="ohh noo batsman lost his wicket \n";}
+			else{ballpercomentry="";}
+			commentrystack=ballpercommentry+commentrystack;
+
+			if(inningsflag==0)
+			{inningsnum=player1;}
+			else
+			{inningsnum=player2;
+			}
+
+
+
+			document.getElementById("innings").innerHTML=inningsnum;			
+			document.getElementById("commentry").value=commentrystack;
+			document.getElementById("overboard").value=overstack;
+			if(totalover==0.30000000000000004)
+			{
+					totalover=0.3;
+				
+			}
+			document.getElementById("over").innerHTML=totalover;
+			document.getElementById("wicket").innerHTML=wicket;
+			document.getElementById("target").innerHTML=targetscore;
+			document.getElementById("total").innerHTML=total;
+			document.getElementById("score").innerHTML=value;
+
+			if(inningsflag==1)
+			{
+				if(total>=targetscore)
+				{ 
+					inningsflag=0;
+					var btn=document.getElementById("next");
+					btn.hidden=true;
+					var resubmitbtn=document.getElementById("resubmit");
+					resubmitbtn.hidden=false;
+					
+					
+					document.getElementById("container").value=player2;
+
+					winningflag=1;
+				 }
+
+			}
+
+			
+		}
+
+
+	</script>
+
+</html>

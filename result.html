@@ -1,0 +1,29 @@
+<html>
+<head><link rel="stylesheet" href="custom.css"></head>
+	<body style="">
+	
+		<center>
+		
+		<h1>
+		
+		<div id="winner"><div>
+		<br><div id="scorecard"><div>
+		</h1>
+		
+		<div><h1 style="text-align:right"><a href="menu.html">MENU</a></h1></div>
+		
+		</center>
+		<script>
+		
+		
+			var querystring=decodeURIComponent(window.location.search);
+		querystring=querystring.substring(6);
+		
+		var queries=querystring.split("+");
+		
+			document.getElementById("winner").innerHTML="<br><br><br><center><h1>"+querystring+" wins</h1></center> "
+			//document.getElementById("scorecard").innerHTML=queries[0]+"="+queries[1];	
+		</script>
+	</body>
+
+</html>

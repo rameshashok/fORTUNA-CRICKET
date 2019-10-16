@@ -1,0 +1,113 @@
+<html>
+
+	<head>	
+		<link rel="stylesheet" href="custom.css">
+	<meta name="viewport" content="width= device-width , initial-scale=1.0">
+	
+	</head>
+	<body style="">
+	<div>
+	<center>
+		<form method="get" name="selection" action="mattai-panthu.html" onsubmit="return validate()">
+		<center>
+		
+		
+		
+		<table  cellspacing="10" cellpadding="25" style=" padding:10px; text-align:center; border-spacing:10px;">
+		<tr><div>
+			<td><label for= "player1"><div id="labels"><h3>PLAYER l</h3></div></label></td>
+			<td><div id="labels"><h3>Vs</h3></div></td>
+			<td><label for="player2"><div id="labels"><h3>PLAYER 2</h3></div> </label></td></div>                        
+		</tr>
+		
+		<tr>
+		<div>
+		<td><div><select name="pla1" id="player1">
+			
+				<option value="Select team">Select team</option>	
+				<option value="India">India</option>
+				<option value="Australia">Australia</option>
+				<option value="Srilanka">Srilanka</option>
+				<option value="Newzland">Newzland</option>
+				<option value="England">England</option>
+				<option value="Pakistan">Pakistan</option>
+				<option value="Afganistan">Afganistan</option>
+				<option value="Bangladesh">Bangladesh</option>
+			</select></div></td>
+			<td></td>
+		<td><div><select name="pla2" id="player2">
+			
+				<option value="Select team">Select team</option>
+				<option value="India">India</option>
+				<option value="Australia">Australia</option>
+				<option value="Srilanka">Srilanka</option>
+				<option value="Newzland">Newzland</option>
+				<option value="England">England</option>
+				<option value="Pakistan">Pakistan</option>
+				<option value="Afganistan">Afganistan</option>
+				<option value="Bangladesh">Bangladesh</option>
+			</select></div>   </td>
+
+		
+		</div>
+		</tr>
+			
+		<tr>
+			<div>
+		
+			<td><h3><input type="radio" name="inf1" value="2">2</h3></td>
+			<td><h3><input type="radio" name="inf1" value="5">5</h3></td>
+			<td><h3><input type="radio" name="inf1" value="10">10</h3></td>	</div>
+		</tr>
+		<tr><center>
+		
+		<td colspan="3"><div><button class="button submit" type="submit" value="Lets play">LETS PLAY</button></div></td>
+		</center>
+		</tr>
+			    
+			
+		</table>
+		</center>
+		</form>
+	</center>
+	<div>
+	</body>
+	
+	<script>
+
+	function validate()
+	{
+	
+		var team1=document.selection.pla1.value;
+		var team2=document.selection.pla2.value;
+		var over=document.selection.inf1.value;
+			
+			if(team1==team2)
+			{
+				alert("CHOOSE DIFFRENT TEAM");
+				return false;
+			}
+						
+			if(team1=="Select team")
+			{
+				alert("CHOOSE TEAM FOR PLAYER1");
+				return false;
+			}
+			if(team2=="Select team")
+			{
+				alert("CHOOSE TEAM FOR PLAYER2");
+				return false;
+			}
+			
+			if(over<2)
+			{
+				alert("CHOOSE OVER");
+				return false;
+			}
+			
+		
+	}
+
+	</script>
+
+</html>
